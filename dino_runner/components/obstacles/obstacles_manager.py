@@ -20,18 +20,22 @@ class ObstacleManager:
             if len(self.obstacles) == 0:
                 cactus = Cactus(LARGE_CACTUS)
                 self.obstacles.append(cactus)
-        elif obstacle_type == 2:
+        else:
             if len(self.obstacles) == 0:
-                pajaro = Bird(BIRD)
-                self.obstacles.append(pajaro)
+                bird = Bird(BIRD)
+                self.obstacles.append(bird)
 
 
         for obstacle in self.obstacles:
             obstacle.update(game.game_speed, self.obstacles)
             if game.player.dino_rect.colliderect(obstacle.rect):
                 game.playing = False
+                game.death_count += 1
                 break
 
     def draw(self, screen):
         for obstacle in self.obstacles:
             obstacle.draw(screen)
+
+    def reset_obstacles(self):
+        self.obstacles = []
