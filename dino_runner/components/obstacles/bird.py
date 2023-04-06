@@ -11,7 +11,7 @@ class Bird(Obstacle):
         self.type = 0
         self.flight_index = 0
         super().__init__(image, self.type) 
-        self.rect.y = random.randrange(50,300)
+        self.rect.y = random.randrange(50,260)
 
     def draw(self, screen):
         if self.flight_index > 10:
