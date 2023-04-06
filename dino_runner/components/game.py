@@ -1,7 +1,7 @@
 import pygame
 import random
 
-from dino_runner.utils.constants import BG, ICON, SCREEN_HEIGHT, SCREEN_WIDTH, TITLE, FPS, CLOUD, DEAD, FONT_STYLE, DEFAULT_TYPE
+from dino_runner.utils.constants import BG, ICON, SCREEN_HEIGHT, SCREEN_WIDTH, TITLE, FPS, CLOUD, DEAD, FONT_STYLE, DEFAULT_TYPE, AROUND
 from dino_runner.components.score import Score
 from dino_runner.components.menu import Menu
 from dino_runner.components.power_ups.power_up_manager import PowerUpManager
@@ -20,8 +20,10 @@ class Game:
         self.clock = pygame.time.Clock()
         self.playing = False
         self.game_speed = 20
+        self.hammer_speed = 50
         self.x_pos_bg = 0
         self.y_pos_bg = 380
+        self.around = AROUND
         self.cloud = CLOUD
         self.x_pos_cloud = self.X_POS_CLOUD
         self.y_pos_cloud = 100
@@ -59,13 +61,13 @@ class Game:
     def update(self):
         user_input = pygame.key.get_pressed()
         self.score.update(self)       
-        self.player.update(user_input)
+        self.player.update(user_input, self)
         self.obstacle_manager.update(self)
         self.power_up_manager.update(self)
 
     def draw(self):
         self.clock.tick(FPS)
-        self.screen.fill((52, 152, 219))
+        self.screen.blit(self.around, (0,0))
         self.draw_background()
         self.befog()
         self.player.draw(self.screen)

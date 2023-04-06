@@ -2,8 +2,8 @@ import pygame
 import random
 
 from pygame.sprite import Sprite
+from dino_runner.components.dinosaur import Dinosour
 from dino_runner.utils.constants import SCREEN_WIDTH
-
 class PowerUp(Sprite):
     def __init__(self, image, type):
         self.image = image
@@ -12,11 +12,14 @@ class PowerUp(Sprite):
         self.rect.x = SCREEN_WIDTH
         self.rect.y = random.randint(125, 175)
         self.star_time = 0
+        self.player = Dinosour()
 
     def update(self, game_speed, power_ups):
         self.rect.x -= game_speed
         if self.rect.x < -self.rect.width:
             power_ups.pop()
+        
 
     def draw(self, screen):
         screen.blit(self.image, self.rect)
+

@@ -35,6 +35,11 @@ class ObstacleManager:
                     break
                 else:
                     self.obstacles.remove(obstacle)
+                    
+            if game.player.hammer_rect.colliderect(obstacle.rect):
+                self.obstacles.remove(obstacle)
+                game.player.reset_hammer()
+
 
     def draw(self, screen):
         for obstacle in self.obstacles:

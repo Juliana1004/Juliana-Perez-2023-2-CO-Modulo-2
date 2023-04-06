@@ -20,7 +20,7 @@ class Score:
         screen.blit(self.text, self.text_rect.center)
 
     def score_counter(self, game):
-        self.text = self.font.render(f"HS: {game.winner} | Score:  {self.score}", True, (0, 0, 0))
+        self.text = self.font.render(f"HS: {game.winner} | Score:  {self.score}", True, (253, 254, 254))
         self.text_rect = self.text.get_rect()
         self.text_rect.center = self.SCREEN_SCORE
 

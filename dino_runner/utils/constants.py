@@ -71,9 +71,13 @@ HEART = pygame.image.load(os.path.join(IMG_DIR, 'Other/SmallHeart.png'))
 
 DEAD = pygame.image.load(os.path.join(IMG_DIR, "Dino/DinoAsteroid.png"))
 
+AROUND = pygame.image.load(os.path.join(IMG_DIR,"Other/Meteorito.jpg"))
+
 DEFAULT_TYPE = "default"
 
 SHIELD_TYPE = "shield"
+
+HAMMER_TYPE = "hammer"
 
 FONT_STYLE = "freesansbold.ttf"
 
